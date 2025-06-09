@@ -16,81 +16,82 @@ export default function Navbar() {
     <>
       {/* Navbar */}
       <nav className="sticky top-0 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 backdrop-blur-lg">
-      <div className="flex flex-col p-4 md:flex-row md:items-center md:justify-between">
+  <div className="flex flex-col p-4 md:flex-row md:items-center md:justify-between">
+    <a
+      href="#"
+      className="flex items-center space-x-3 rtl:space-x-reverse transition-transform duration-300 hover:scale-105"
+    >
+      <span className="self-center text-2xl font-bold bg-gradient-to-r from-yellow-300 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
+        NICOLLY MUNHOZ
+      </span>
+    </a>
 
+    {/* Botão mobile */}
+    <button
+      onClick={() => setIsOpen(!isOpen)}
+      type="button"
+      className="inline-flex items-center justify-center rounded-lg p-2 text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 md:hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-300/20"
+      aria-controls="navbar-default"
+      aria-expanded={isOpen}
+    >
+      <span className="sr-only">Abrir menu</span>
+      <svg
+        className="h-6 w-6"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M4 6h16M4 12h16M4 18h16"
+        />
+      </svg>
+    </button>
+
+    {/* Menu */}
+    <div
+      className={`${
+        isOpen ? "block" : "hidden"
+      } md:block md:w-auto w-full mt-2 md:mt-0`}
+      id="navbar-default"
+    >
+      <ul className="flex flex-col gap-4 rounded-lg backdrop-blur-md p-4 font-medium md:flex-row md:space-x-8 md:p-0 md:mt-0">
+        <li>
           <a
             href="#"
-            className="flex items-center space-x-3 rtl:space-x-reverse transition-transform duration-300 hover:scale-105"
+            onClick={handleInicioClick}
+            className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
           >
-            <span className="self-center text-2xl font-bold bg-gradient-to-r from-yellow-300 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
-              NICOLLY MUNHOZ
-            </span>
+            INÍCIO
           </a>
-
-          {/* Botão mobile */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            type="button"
-            className="inline-flex items-center justify-center rounded-lg p-2 text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 md:hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-300/20"
-            aria-controls="navbar-default"
-            aria-expanded={isOpen}
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={handleProjectsClick}
+            className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
           >
-            <span className="sr-only">Abrir menu</span>
-            <svg
-              className="h-6 w-6"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-
-          {/* Menu */}
-          <div
-            className={`${
-              isOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto`}
-            id="navbar-default"
+            PROJETOS
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/NicollyEising"
+            target="_blank"
+            className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
           >
-            <ul className="mt-4 flex flex-col gap-4 rounded-lg backdrop-blur-md p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:p-0">
-              <li>
-                <a
-                  href="#"
-                  onClick={handleInicioClick}
-                  className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
-                >
-                  INÍCIO
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onClick={handleProjectsClick}
-                  className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
-                >
-                  PROJETOS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/NicollyEising" target="_blank"
-                  className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
-                >
-                  GITHUB
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            GITHUB
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
 
       {/* Hero (visível se showProjects = false) */}
       {!showProjects && (
