@@ -14,83 +14,92 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Navbar */}
       <nav className="sticky top-0 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 backdrop-blur-lg">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between p-4">
-          <div className="flex w-full items-center justify-between md:w-auto">
-            <a
-              href="#"
-              className="flex items-center space-x-3 rtl:space-x-reverse transition-transform duration-300 hover:scale-105"
-            >
-              <span className="self-center text-2xl font-bold bg-gradient-to-r from-yellow-300 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
-                NICOLLY MUNHOZ
-              </span>
-            </a>
+  <div className="flex flex-col md:flex-row md:items-center md:justify-between p-4">
+    
+    {/* Linha superior: título à esquerda e botão à direita */}
+    <div className="flex w-full items-center justify-between md:w-auto">
+      {/* Logo */}
+      <a
+        href="#"
+        className="flex items-center space-x-3 rtl:space-x-reverse transition-transform duration-300 hover:scale-105"
+      >
+        <span className="self-center text-2xl font-bold bg-gradient-to-r from-yellow-300 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
+          NICOLLY MUNHOZ
+        </span>
+      </a>
 
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              type="button"
-              className="inline-flex items-center justify-center rounded-lg p-2 text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 md:hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-300/20"
-              aria-controls="navbar-default"
-              aria-expanded={isOpen}
-            >
-              <span className="sr-only">Abrir menu</span>
-              <svg
-                className="h-6 w-6"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
+      {/* Botão mobile à direita */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        type="button"
+        className="inline-flex items-center justify-center rounded-lg p-2 text-gray-300 hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-yellow-300 md:hidden transition-shadow duration-300 hover:shadow-lg hover:shadow-yellow-300/20"
+        aria-controls="navbar-default"
+        aria-expanded={isOpen}
+      >
+        <span className="sr-only">Abrir menu</span>
+        <svg
+          className="h-6 w-6"
+          aria-hidden="true"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
 
-          <div
-            className={`${
-              isOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto mt-2 md:mt-0`}
-            id="navbar-default"
+    {/* Menu */}
+    <div
+      className={`${
+        isOpen ? "block" : "hidden"
+      } w-full md:block md:w-auto mt-2 md:mt-0`}
+      id="navbar-default"
+    >
+      <ul className="flex flex-col gap-4 rounded-lg backdrop-blur-md p-4 font-medium md:flex-row md:space-x-8 md:p-0 md:mt-0">
+        <li>
+          <a
+            href="#"
+            onClick={handleInicioClick}
+            className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
           >
-            <ul className="flex flex-col gap-4 rounded-lg backdrop-blur-md p-4 font-medium md:flex-row md:space-x-8 md:p-0 md:mt-0">
-              <li>
-                <a
-                  href="#"
-                  onClick={handleInicioClick}
-                  className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
-                >
-                  INÍCIO
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  onClick={handleProjectsClick}
-                  className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
-                >
-                  PROJETOS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/NicollyEising"
-                  target="_blank"
-                  className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
-                >
-                  GITHUB
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            INÍCIO
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            onClick={handleProjectsClick}
+            className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
+          >
+            PROJETOS
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/NicollyEising"
+            target="_blank"
+            className="block rounded py-2 px-3 text-white transition-all duration-300 hover:bg-yellow-300/10 hover:text-yellow-300 hover:scale-105"
+          >
+            GITHUB
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 
+
+
+      {/* Hero (visível se showProjects = false) */}
       {!showProjects && (
         <section className="bg-gray-900 relative flex h-screen items-center justify-center overflow-hidden lg:mt-[-20vh] lg:mb-[-30vh] transition-all duration-700">
           <div className="absolute inset-0 bg-[radial-gradient(#444769_1px,transparent_1px)] [background-size:16px_16px] [mask-image:radial-gradient(ellipse_50%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-20"></div>
@@ -185,6 +194,7 @@ export default function Navbar() {
                 title="Teclado Virtual"
                 desc="Sistema de autenticação seguro baseado em um teclado virtual."
                 link="https://github.com/NicollyEising/tecladoVirtual"
+
               />
               <ProjetoCard
                 title="Gerenciador de Salas"
@@ -200,21 +210,25 @@ export default function Navbar() {
                 title="E-commerce de Cadeiras - 2023"
                 desc="Loja virtual de sapatos, layout moderno e responsivo."
                 link="https://github.com/NicollyEising/WebsiteMoveisCRUD"
+
               />
               <ProjetoCard
                 title="Previsão de Valores com Machine Learning"
                 desc="Modelo preditivo que utiliza LTSM, XGBoost e Ensemble como abordagens de Machine Learning."
                 link="https://github.com/NicollyEising/Machine-LearningPredictionValues"
+
               />
               <ProjetoCard
                 title="Previsão do Tempo"
                 desc="App que fornece previsões meteorológicas."
                 link="https://github.com/NicollyEising/Weather"
+
               />
               <ProjetoCard
                 title="E-commerce de Sapatos - 2023"
                 desc="Loja virtual completa com carrinho de compras e pagamentos."
                 link="https://github.com/NicollyEising/Projeto-E-commerce-V1"
+
               />
               <ProjetoCard
                 title="App de Comidas - 2023"
